@@ -1,0 +1,46 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Lambda with Test Tool",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/HelloWorld/bin/Debug/net8.0/HelloWorld.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/HelloWorld",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "justMyCode": false,
+            "env": {
+                "TABLE_NAME": "UnumDebugLambda",
+                "QUEUE_URL": "https://sqs.us-east-1.amazonaws.com/123456789012/HelloWorldQueue",
+                "POWERTOOLS_METRICS_NAMESPACE": "AWSLambdaPowertools",
+                "AWS_REGION": "us-west-2",
+                "AWS_PROFILE": "lambda-debug",
+                "DEBUG_ROLE_ARN": "arn:aws:iam::608327825510:role/service-role/SpecReqCreation-9w5me-role-1UL8VE1UPCE"
+            }
+        },
+        {
+            "name": "SAM Local Debug",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "sam-build",
+            "program": "sam",
+            "args": [
+                "local",
+                "start-api",
+                "--debug-port",
+                "5858",
+                "--warm-containers",
+                "EAGER"
+            ],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "integratedTerminal",
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development"
+            }
+        }
+    ]
+}

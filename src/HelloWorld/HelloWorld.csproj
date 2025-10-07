@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+    <OutputType>Exe</OutputType>
+    <!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <!-- Generate ready to run images during publishing to improve cold start time. -->
+    <PublishReadyToRun>true</PublishReadyToRun>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.Core" Version="2.2.0" />
+    <PackageReference Include="Amazon.Lambda.Serialization.SystemTextJson" Version="2.4.0" />
+    <PackageReference Include="Amazon.Lambda.APIGatewayEvents" Version="2.5.0" />
+    <PackageReference Include="AWS.Lambda.Powertools.Tracing" Version="1.4.1" />
+    <PackageReference Include="AWS.Lambda.Powertools.Metrics" Version="1.6.1" />
+    <PackageReference Include="AWS.Lambda.Powertools.Logging" Version="1.5.1" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.400.44" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.7.400.44" />
+    <PackageReference Include="AWSSDK.SecurityToken" Version="3.7.400.44" />
+    <PackageReference Include="Amazon.Lambda.TestUtilities" Version="2.0.0" />
+  </ItemGroup>
+</Project>
